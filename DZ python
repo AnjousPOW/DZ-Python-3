@@ -1,0 +1,20 @@
+def slovar(name_file):
+    with open(name_file, 'r', encoding='utf8') as f:
+        spisok_slov = {}
+        text = f.read()
+
+        for word in text.split():
+            if word in spisok_slov:
+               spisok_slov[word] += 1
+            else:
+                spisok_slov[word] = 1
+    return spisok_slov
+
+
+def Nap_file(spisok_slov,name_file):
+      with open(name_file, 'w',encoding='utf8') as inf:
+         for key, value in spisok_slov.items():
+              inf.write(f'Слово {key} встречается \t{value} раз \n ')
+
+
+Nap_file(slovar('war_and_peace.txt'), 'result1.txt')
